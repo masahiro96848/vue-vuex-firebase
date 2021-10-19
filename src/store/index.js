@@ -12,12 +12,18 @@ const store =  new Vuex.Store({
   mutations: {
     addtodo(state, payload) {
       state.list.push({title: payload.title, todos:[]})
+    },
+    removelist(state, payload) {
+      state.list.splice(payload.listIndex, 1)
     }
   },
   actions: {
     addtodo(context, payload) {
       context.commit('addtodo', payload)
     },
+    removelist(context, payload) {
+      context.commit('removelist', payload)
+    }
   },
   getters: {
   }
