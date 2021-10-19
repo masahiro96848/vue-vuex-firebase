@@ -7,25 +7,7 @@ const savedTodoLists = localStorage.getItem('todo-lists')
 
 const store =  new Vuex.Store({
   state: {
-    list: savedTodoLists ? JSON.parse(savedTodoLists): [
-      {
-        title: 'Backlog',
-        cards: [
-          { body: 'English' },
-          { body: 'Mathematics' },
-        ]
-      },
-      {
-        title: 'Todo',
-        cards: [
-          { body: 'Science' }
-        ]
-      },
-      {
-        title: 'Doing',
-        cards: []
-      }
-    ]
+    list: savedTodoLists ? JSON.parse(savedTodoLists): []
   },
   mutations: {
     addtodo(state, payload) {
