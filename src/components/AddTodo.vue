@@ -6,9 +6,9 @@
             class="text-input"
             placeholder="やることリストを追加"
         >
-        <button type="submit" class="btn-add">
+        <!-- <button type="submit" class="btn-add">
             追加
-        </button>
+        </button> -->
     </form>
 </template>
 
@@ -27,3 +27,12 @@ export default {
     },
 }
 </script>
+
+<style >
+.text-input {
+    width: 27%;
+    padding: 15px 15px ;
+    
+}
+
+</style>

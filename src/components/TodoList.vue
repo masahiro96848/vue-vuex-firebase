@@ -1,9 +1,11 @@
 <template>
-    <div class="list">
-        <p class="listheader">{{ title }} 
-            <span class="updatelist" @click="updateList">編集</span>
-            <span class="deletelist" @click="removeList">削除</span>
-        </p>
+    <div class="p-lists">
+        <div class="p-list">
+            <p class="p-todolist">{{ title }} </p>
+        </div>
+            <button class="p-deletelist" @click="removeList">削除</button>
+        
+        
         
     </div>
 </template>
@@ -30,3 +32,20 @@ export default {
     },
 }
 </script>
+<style>
+.p-lists {
+    display: flex;
+    width: 30%;
+    margin: 20px auto;
+    border: 1px solid black;
+}
+.p-list {
+    width: 90%;
+}
+.p-todolist {
+    text-align: left;
+    padding: 15px 15px 15px 60px;
+    margin: 0;
+}
+
+</style>

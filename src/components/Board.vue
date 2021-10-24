@@ -1,7 +1,7 @@
 <template>
     <div>
         <header>
-            <p>Todo List</p>
+            <p class="p-title">Todo List</p>
         </header>
         <main>
         <AddTodo />
@@ -36,3 +36,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.p-title {
+    font-size: 48px;
+    font-weight: 700;
+}
+</style>
