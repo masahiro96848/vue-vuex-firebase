@@ -13,6 +13,9 @@ const store =  new Vuex.Store({
     addtodo(state, payload) {
       state.list.push({title: payload.title, todos:[]})
     },
+    // updatetodo(state, payload) {
+    //   state.list.
+    // },
     removelist(state, payload) {
       state.list.splice(payload.listIndex, 1)
     }

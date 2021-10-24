@@ -4,7 +4,7 @@
             type="text"
             v-model="title"
             class="text-input"
-            placeholder="やることリスト"
+            placeholder="やることリストを追加"
         >
         <button type="submit" class="btn-add">
             追加
