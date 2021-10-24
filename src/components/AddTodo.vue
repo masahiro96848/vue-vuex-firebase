@@ -30,7 +30,7 @@ export default {
 
 <style >
 .text-input {
-    width: 27%;
+    width: 500px;
     padding: 15px 15px ;
     
 }

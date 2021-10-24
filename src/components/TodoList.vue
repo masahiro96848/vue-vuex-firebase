@@ -35,7 +35,7 @@ export default {
 <style>
 .p-lists {
     display: flex;
-    width: 30%;
+    width: 530px;
     margin: 20px auto;
     border: 1px solid black;
 }
