@@ -3,37 +3,24 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const savedTodoLists = localStorage.getItem('todo-lists')
+export default new Vuex.Store({
+	state: {
+		todos: [],
+		uid: 0,
+	},
+	getters: {
 
-const store =  new Vuex.Store({
-  state: {
-    list: savedTodoLists ? JSON.parse(savedTodoLists): []
-  },
-  mutations: {
-    addtodo(state, payload) {
-      state.list.push({title: payload.title, todos:[]})
-    },
-    // updatetodo(state, payload) {
-    //   state.list.
-    // },
-    removelist(state, payload) {
-      state.list.splice(payload.listIndex, 1)
-    }
-  },
-  actions: {
-    addtodo(context, payload) {
-      context.commit('addtodo', payload)
-    },
-    removelist(context, payload) {
-      context.commit('removelist', payload)
-    }
-  },
-  getters: {
-  }
+	},
+	mutations: {
+		addTodo(state, todoTitle) {
+			const newTodo = todoTitle && todoTitle.trim();
+			if(!newTodo){
+				return;
+			}
+			state.todos.push({
+				id: state.uid++,
+				title: newTodo,
+			})
+		}
+	}
 })
-
-store.subscribe((mutation, state) => {
-  localStorage.setItem('todo-lists', JSON.stringify(state.list))
-})
-
-export default store

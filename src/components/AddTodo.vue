@@ -1,28 +1,27 @@
 <template>
-    <form class="addList" @submit.prevent="addTodoList">
+    <form class="addList" @submit.prevent="addTodo">
         <input 
             type="text"
-            v-model="title"
+            v-model="newTodo"
             class="text-input"
             placeholder="やることリストを追加"
+            @keypress.enter="addTodo"
         >
-        <!-- <button type="submit" class="btn-add">
-            追加
-        </button> -->
     </form>
 </template>
 
 <script>
 export default {
+    name: 'AddTodo',
     data() {
         return {
-            title: ''
+            newTodo: ""
         }
     },
     methods: {
-        addTodoList() {
-            this.$store.dispatch('addtodo', { title: this.title})
-            this.title = ""
+        addTodo() {
+            this.$store.commit('addTodo', this.newTodo);
+            this.newTodo = ""
         },
     },
 }
@@ -30,7 +29,7 @@ export default {
 
 <style >
 .text-input {
-    width: 500px;
+    width: 470px;
     padding: 15px 15px ;
     
 }

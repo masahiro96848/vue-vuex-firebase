@@ -1,26 +1,30 @@
 <template>
-    <div class="p-lists">
-        <div class="p-list">
-            <p class="p-todolist">{{ title }} </p>
-        </div>
-            <button class="p-deletelist" @click="removeList">削除</button>
-        
-        
-        
-    </div>
+    <section class="main">
+        <ul class="p-todolist">
+            <li 
+                v-for="todo in todos" 
+                :key="todo.id"
+                class="p-todo" >
+                <TodoItem
+                    :todo="todo"
+                />
+            </li>
+        </ul>
+    </section>
 </template>
 
 <script>
+import TodoItem from './TodoItem.vue'
+
 export default {
-    props: {
-        title: {
-            type: String,
-            required: true
-        },
-        listIndex: {
-            type: Number,
-            required: true,
-        },
+    name: 'TodoList',
+    components: {
+            TodoItem,
+    },
+    computed: {
+        todos() {
+            return this.$store.state.todos
+        }
     },
     methods: {
         updateList(){
@@ -33,19 +37,22 @@ export default {
 }
 </script>
 <style>
-.p-lists {
-    display: flex;
-    width: 530px;
-    margin: 20px auto;
-    border: 1px solid black;
-}
-.p-list {
-    width: 90%;
+.main {
+    width: 500px;
+    margin: 0 auto;
 }
 .p-todolist {
+    width: 500px;
     text-align: left;
-    padding: 15px 15px 15px 60px;
-    margin: 0;
+    /* padding: 15px 15px 15px 60px; */
+    padding-left: 0px;
+    margin: 0 auto;
+    list-style: none;
+}
+.p-todo {
+    border: 1px solid black;
+    margin: 20px 0;
+    padding: 15px 15px ;
 }
 
 </style>
