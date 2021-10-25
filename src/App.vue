@@ -1,19 +1,31 @@
 <template>
-	<div id="app">
-		<Board />
+	<div id="app" class="todoapp">
+		<header>
+            <p class="p-title">Todo List</p>
+			<AddTodo />
+        </header>
+		<TodoList />
 	</div>
 </template>
 
 <script>
-import Board from './components/Board.vue'
+import store from './store/index'
+import TodoList from './components/TodoList.vue'
+import AddTodo from './components/AddTodo.vue'
+
 export default {
 	name: 'app',
+	store,
 	components: {
-		Board,
+		TodoList, AddTodo,
 	}
 }
 </script>
 <style>
+.p-title {
+    font-size: 48px;
+    font-weight: 700;
+}
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
