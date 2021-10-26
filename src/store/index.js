@@ -3,10 +3,25 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+const STORAGE_KEY = 'todo-vuejs-2.6';
+const todoStorage = {
+	fetch() {
+		const todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+		todos.forEach(function(todo, index) {
+			todo.id = index
+		});
+		todoStorage.uid = todos.length;
+		return todos;
+	},
+	save(todos) {
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
+	}
+}
+
 export default new Vuex.Store({
 	state: {
-		todos: [],
-		uid: 0,
+		todos: todoStorage.fetch(),
+		// uid: 0,
 	},
 	getters: {
 		remaining: (state) => {
@@ -21,15 +36,18 @@ export default new Vuex.Store({
 				return;
 			}
 			state.todos.push({
-				id: state.uid++,
+				id: todoStorage.uid++,  // state.uid++
 				title: newTodo,
-			})
+			});
+			todoStorage.save(state.todos)
 		},
 		done(state,{todo, completed}) {
 			todo.completed = completed;
+			todoStorage.save(state.todos)
 		},
 		removeTodo(state, todo) {
 			state.todos = state.todos.filter((item) => item != todo);
+			todoStorage.save(state.todos)
 		}
 	}
 })
