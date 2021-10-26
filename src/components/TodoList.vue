@@ -1,10 +1,13 @@
 <template>
-    <section class="main">
-        <ul class="p-todolist">
+    <section class="main" v-show="todos.length" v-cloak>
+        <ul class="p-todolist toggle-all">
             <li 
                 v-for="todo in todos" 
                 :key="todo.id"
-                class="p-todo" >
+                class="p-todo" 
+                :class="['todo', {completed: todo.completed}]"
+                
+            >
                 <TodoItem
                     :todo="todo"
                 />
@@ -36,7 +39,7 @@ export default {
     },
 }
 </script>
-<style>
+<style scoped>
 .main {
     width: 500px;
     margin: 0 auto;
@@ -53,6 +56,9 @@ export default {
     border: 1px solid black;
     margin: 20px 0;
     padding: 15px 15px ;
+}
+[v-cloak] {
+	display: none;
 }
 
 </style>

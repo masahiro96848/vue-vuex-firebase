@@ -21,6 +21,12 @@ export default new Vuex.Store({
 				id: state.uid++,
 				title: newTodo,
 			})
+		},
+		done(state,{todo, completed}) {
+			todo.completed = completed;
+		},
+		removeTodo(state, todo) {
+			state.todos = state.todos.filter((item) => item != todo);
 		}
 	}
 })
