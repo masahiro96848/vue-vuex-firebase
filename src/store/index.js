@@ -9,7 +9,10 @@ export default new Vuex.Store({
 		uid: 0,
 	},
 	getters: {
-
+		remaining: (state) => {
+			const todos = state.todos.filter((todo) => !todo.completed);
+			return todos.length
+		}
 	},
 	mutations: {
 		addTodo(state, todoTitle) {
