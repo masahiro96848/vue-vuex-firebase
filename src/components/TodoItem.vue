@@ -5,6 +5,7 @@
                 type="checkbox" 
                 class="todo"
                 :value="todo.completed"
+                :checked="todo.completed"
                 @input="onInput"
             >
             <label for="">{{ todo.title }}</label>
@@ -28,7 +29,7 @@ export default {
         onInput() {
             this.$store.commit('done', {
                 todo: this.todo,
-                completed: this.todo.completed
+                completed: !this.todo.completed
             })
         },
         removeTodo() {
