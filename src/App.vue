@@ -5,6 +5,7 @@
 			<AddTodo />
         </header>
 		<TodoList />
+		<TodoController />
 	</div>
 </template>
 
@@ -12,12 +13,13 @@
 import store from './store/index'
 import TodoList from './components/TodoList.vue'
 import AddTodo from './components/AddTodo.vue'
+import TodoController from './components/TodoController.vue'
 
 export default {
 	name: 'app',
 	store,
 	components: {
-		TodoList, AddTodo,
+		TodoList, AddTodo, TodoController
 	}
 }
 </script>
