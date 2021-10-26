@@ -1,10 +1,12 @@
 <template>
-    <section class="main">
+    <section class="main" v-show="todos.length" v-cloak>
         <ul class="p-todolist">
             <li 
                 v-for="todo in todos" 
                 :key="todo.id"
-                class="p-todo" >
+                class="p-todo" 
+                :class="['todo', {completed: todo.comleted}]"
+            >
                 <TodoItem
                     :todo="todo"
                 />
