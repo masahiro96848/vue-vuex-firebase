@@ -24,6 +24,9 @@ export default new Vuex.Store({
 		},
 		done(state,{todo, completed}) {
 			todo.completed = completed;
+		},
+		removeTodo(state, todo) {
+			state.todos = state.todos.filter((item) => item != todo);
 		}
 	}
 })

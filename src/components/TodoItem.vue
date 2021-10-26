@@ -5,13 +5,13 @@
                 type="checkbox" 
                 class="todo"
                 :value="todo.completed"
-                @onInput="onInput"
+                @input="onInput"
             >
             <label for="">{{ todo.title }}</label>
         </div>
         <button 
             class="destroy"
-
+            @click="removeTodo"
         >
             削除する
         </button>
@@ -30,6 +30,9 @@ export default {
                 todo: this.todo,
                 completed: this.todo.completed
             })
+        },
+        removeTodo() {
+            this.$store.commit('removeTodo', this.todo)
         }
     },
 }
