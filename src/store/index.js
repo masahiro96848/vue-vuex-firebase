@@ -18,16 +18,34 @@ const todoStorage = {
 	}
 }
 
+const filters = {
+	all(todos) {
+		return todos;
+	},
+	active(todos) {
+		return todos.filter((todo) => !todo.completed);
+	},
+	completed(todos) {
+		return todos.filter((todo) => todo.completed);
+	}
+
+}
+
 export default new Vuex.Store({
 	state: {
 		todos: todoStorage.fetch(),
 		// uid: 0,
+		visibility: 'all',
 	},
 	getters: {
-		remaining: (state) => {
-			const todos = state.todos.filter((todo) => !todo.completed);
-			return todos.length
-		}
+		filteredTodos: state => filters[state.visibility](state.todos),
+		remaining: state => {
+			const todos = state.todos.filter(todo => !todo.completed);
+			
+			return todos.length;
+		},
+		
+		
 	},
 	mutations: {
 		addTodo(state, todoTitle) {
@@ -48,6 +66,9 @@ export default new Vuex.Store({
 		removeTodo(state, todo) {
 			state.todos = state.todos.filter((item) => item != todo);
 			todoStorage.save(state.todos)
+		},
+		removeCompleted(state) {
+			state.todos = filters.active(state.todos);
 		}
 	}
 })
