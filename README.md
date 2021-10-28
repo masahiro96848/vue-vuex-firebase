@@ -1,3 +1,6 @@
+# firebase Hosting  
+https://vue-vuex-firebase-87c7a.web.app/
+
 # vue-vuex-firebase
 
 ## Project setup
